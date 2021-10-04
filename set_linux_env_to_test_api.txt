@@ -1,0 +1,66 @@
+Setup a linux system 
+
+1.	Update system
+
+sudo apt update && sudo apt upgrade
+
+2.	Install version manager (Pyenv)
+2.1.	Update packages
+
+sudo apt-get update
+
+2.2.	 Install basic packages
+sudo apt-get install -y build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm gettext libncurses5-dev tk-dev tcl-dev blt-dev libgdbm-dev git python-dev python3-dev aria2
+
+curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
+
+2.3.	Edit .bashrc (go to ‘home’ and search for > vim /.bashrc)
+
+2.4.	Paste the following code at the end of .bashrc file: 
+
+export PYTHON_BUILD_ARIA2_OPTS="-x 10 -k 1M"
+export PATH="~/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+2.5.	Close open terminals
+
+3.	Install pip
+
+Sudo apt install python3-pip
+
+4.	Create virtual environment
+
+pyenv virtualenv 3.8.0(versão do python de sua escolha) datascience (nome_do_diretório)
+
+4.1.	Activate virtual env
+
+pyenv activate datascience 
+
+5.	Install dependencies
+
+pip install cytron
+pip install -r requirement.txt 
+
+6.	Install IDE’s
+
+Pip install jupyter notebook
+Pip install jupyter_contrib_nbextensions
+Jupyter contrib nbextensions install --user 
+
+
+
+# Basic Linux commands
+cd - navegating pages (cd nome_da_pasta)
+pwd - current directory (pwd)
+ls - files in current directory (ls)
+cp - copy files (cp diretorio/do/arquivo.txt /pasta/para/onde/quer/copiar)
+mv - move files (mv diretorio/do/arquivo.txt /pasta/para/onde/quer/mover)
+rm - remove files (rm nome_do_arquivo)
+rmdir - remove empty directories (rmdir nome_do_diretorio)
+rm-r - remove directories (rm-r nome_do_diretorio)
+mkdir - make directory (mkdir nome_do_diretorio)
+car - what is inside a file
+file - type of file inside a file
+ctrl+l - limpa o terminal
+
