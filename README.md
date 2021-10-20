@@ -35,7 +35,7 @@ This project is based on the CRISP-DS (Cross-Industry Standard Process - Data Sc
 
 # 1. Business Problem.
 
-The Blocker Fraud Company is a specialized company in fraud detection on financial transactions. It has the Blocker Fraud service, which ensures the block of fraudulent transactions. The company's business model is service's performance monetization.
+This given case is one of a company specialized in fraud detection for financial transactions. The company's business model is based on performance monetization.
 
 # 2. Business Assumptions.
 
@@ -71,7 +71,7 @@ A superficial descriptive analysis is performed to check the distribution of eac
 
 **1.1. StratifiedKFold**
 
-By dividing the data in two 1/10 part of the total dataset, there is the creation of viable parts of data that remain representative of the fenomenon, given that the stratified k-fold takes samples with balances betweeen categorical features, as close to the original data.
+By dividing the data in two 1/10 part of the total dataset, there is the creation of viable parts of data that remain representative of the fenomenon, given that the stratified k-fold takes samples with balanced categorical features, keeping the data set as close as possible to the original data.
 
 **1.2. Descriptive Statistics**
 There are 3 data types in the dataset: float64(5), int64(3) and object(3). 
@@ -90,7 +90,7 @@ There are 3 data types in the dataset: float64(5), int64(3) and object(3).
 
 **Step 02. Feature Engineering:**
 
-- As previously checked in the data description, some amount transactions are higher than the origin banlance before the transaction. Also, there are amount instances equal to zero. Theoretically, the difference between the origin balance before and after the transaction should be equal to the transaction amount. Therefore, a new feature will be created to check this.
+- As previously checked in the data description, some amount transactions are higher than the origin balance before the transaction. Also, there are amount instances equal to zero. Theoretically, the difference between the origin balance before and after the transaction should be equal to the transaction amount. Therefore, a new feature will be created to check this.
 
 - The same is true for the destination balance: theoretically, the difference between the destination balance after and before the transaction should be equal to the transaction amount. Therefore, a new feature will be created to check this.
 
@@ -110,21 +110,9 @@ There are 3 data types in the dataset: float64(5), int64(3) and object(3).
 
 The variables filtering step aims to remove the outliers from the dataset.
 
-As previously checked in the descriptive statistics, some features have a huge range of values, particularly the amount, destination balance before the transaction (oldbalance_dest) and the destination balance after the transaction (newbalance_dest), as shown in the boxplot below.
+As previously checked in the descriptive statistics, some features have a huge range of values, particularly the amount, destination balance before the transaction (oldbalance_dest) and the destination balance after the transaction (newbalance_dest), as shown in the boxplot below. The three boxplots show clearly that the higher the values, the lower the quantity of observations. It is important to note, however, that this is an intrinsic beahviour of banking account, as there is theoretically no limit to transfer or to have a certain amount of money.
 
-![](images/03_boxplot_amount.png)
-
-![](images/03_boxplot_oldbalance_dest.png)
-
-![](images/03_boxplot_newbalance_dest.png)
-
-The three boxplots show clearly that the higher the values, the lower the quantity of observations. It is important to note, however, that this is an intrinsic beahviour of banking account, as there is theoretically no limit to transfer or to have a certain amount of money.
-
-Therefore, the line filtering was applied in order to help the model to be trained properly, but also cautiously not to mischaracterize the inherent dataset / problem property.
-
-- Amount: filtered values below 20 million;
-- oldbalance_dest: filtered values below 50 million;
-- newbalance_dest: filtered values below 50 million.
+Therefore, the line filtering was not applied in order to keep the data as close as possible to the phenomenon that we are trying to model.
 
 
 **Step 04. Exploratory Data Analysis:**
